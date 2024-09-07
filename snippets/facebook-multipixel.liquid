@@ -1,0 +1,22 @@
+<script>
+  let scriptCode=document.createElement('script');
+  let collectionsJSON={{ product.collections | json }};
+  let colMultiPixel=[];
+  
+  if (collectionsJSON) {
+    for (let i=0; i<collectionsJSON.length; i++) {
+      colMultiPixel.push(collectionsJSON[i].id);
+    }
+  }
+  
+  if (colMultiPixel.length===0 && document.location.href.includes('/collections/')
+      && !document.location.href.includes('/collections/all')) {
+    let nCollection='{{collection.id}}';
+    if (nCollection && !isNaN(nCollection)) {
+      colMultiPixel.push(parseInt(nCollection));
+    }
+  }
+  
+  scriptCode.src="//{{ shop.domain }}/tools/multipixel/sys.js?collections="+JSON.stringify(colMultiPixel);
+  document.head.appendChild(scriptCode);
+</script>

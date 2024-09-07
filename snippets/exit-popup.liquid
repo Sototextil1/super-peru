@@ -1,0 +1,114 @@
+<div id="exit-popup" class="clock-popup exit-one mfp-hide">
+  <button title="Close (Esc)" type="button" class="mfp-close" id="mfp-closeid-exit"><span class="fa fa-times"></span></button>
+  <div class="clock-popup-inner">
+    <div class="exit-popup-gift-icon"><span class="fas fa-gift"></span></div>
+    <h2><span>{{settings.exitpopup_heading}}</span></h2>
+    <p class="ptag">{{settings.exitpopup_text}}</p>
+       <div id="rC_B" class="redCountdownDemo"></div>
+<div class="discount-box">
+  <p class="discount-heading">{{settings.discountcode_heading}}</p>
+  <div class="discount-coupon">
+    <span class="discount-scissors">✂</span>
+    <span class="discount-code"><a href="" class="copy-click" data-tooltip-text="{{ settings.discountcode_clickcopy }}" data-tooltip-text-copied="✔ {{ settings.discountcode_clickcopied }}">{{settings.discountcode}}</a></span>
+  </div>
+</div>
+    {% if cart.item_count > 0 %}
+    <a class="btn btncookie" type="submit"  href="/discount/{{settings.discountcode}}?redirect=/cart" name="checkout">{{settings.exitpopup_button_label_instant}}</a>
+    {% else%}
+    <a class="btn btncookie" type="submit"  href="/discount/{{settings.discountcode}}?redirect={{ request.path }}" name="checkout">{{settings.exitpopup_button_label}}</a>
+    {% endif %}
+  </div>
+</div>
+
+{% style %}
+span.flip-clock-divider.minutes .flip-clock-dot {
+  display: none;
+}
+
+.clock-popup.exit-one {
+  max-width: 480px;
+  background-color: {{settings.exitpopup_bg_color}};
+}
+
+.exit-popup-gift-icon {
+  font-size: {{settings.exitpopup_gifticon_size}}px;
+  color: {{settings.exitpopup_gifticon_color}};
+  line-height: 1;
+}
+
+.exit-one .clock-popup-inner h2 {
+  font-size: {{settings.exitpopup_heading_size}}px;
+}
+
+.exit-one .clock-popup-inner h2 span {
+  color: {{settings.exitpopup_heading_color}};
+}
+
+.clock-popup-inner .ptag {
+  color: {{settings.exitpopup_text_color}};
+}
+
+#exit-popup .mfp-close {
+  line-height: 0 !important;
+  display: block;
+  text-align: center;
+  background-color: #FDFD96 !important;
+}
+
+#exit-popup .mfp-close:hover {
+  color: #000 !important;
+  border-color: #000;
+}
+
+.discount-box {
+  text-align: center;
+  display: inline-block;
+  border: 2px dashed grey;
+  padding: 1.2em 2.2em 2.2em 2.2em;
+  background: {{ settings.discountcode_bg_color }};
+}
+.discount-heading {
+  color: {{ settings.discountcode_text_color }};
+}
+.discount-coupon {
+  display: inline-block;
+  border: 2px dashed black;
+  padding: 0.8em 1.2em;
+  position: relative;
+  background: {{ settings.discountcode_cutout_bg_color }};
+}
+.discount-scissors {
+  position: absolute;
+  top: -25px;
+  left: -12px;
+  transform: rotate(20deg);
+  font-size: 1.4em;
+}
+.discount-code, .discount-code a {
+  color: {{ settings.discountcode_text_color }} !important;
+  font-weight: bold;
+}
+
+.clock-popup-inner > * {
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
+  display: block !important;
+}
+
+#exit-popup a.btn.btncookie {
+  background-color: {{settings.exitpopup_button_bg_color}} !important;
+  color: {{settings.exitpopup_button_text_color}} !important;
+}
+
+{% assign popuptranslate = 'translate(-50%, -50%) !important' -%}
+#exit-popup {
+ position: fixed !important;
+ top: 50% !important;
+ left: 50% !important;
+ -webkit-transform: {{ popuptranslate }};
+ -moz-transform: {{ popuptranslate }};
+ -ms-transform: {{ popuptranslate }};
+ -o-transform: {{ popuptranslate }};
+ transform: {{ popuptranslate }};
+}
+{% endstyle %}

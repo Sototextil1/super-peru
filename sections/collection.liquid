@@ -1,0 +1,162 @@
+	<div class="container-fluid" id="sec{{ section.id }}">
+		<div class="row">
+			<div class="container">
+               {% if section.settings.title != blank %}
+     {%- assign collection = collections[section.settings.collection] -%}
+              {%- assign product_limit = section.settings.grid | times: section.settings.rows -%}
+              <h2 class="section_title xza"><a href="{{collection.url}}">{{ section.settings.title | escape }}</a></h2>
+   
+  {% endif %}
+				  {%- assign collection = collections[section.settings.collection] -%}
+              {%- assign product_limit = section.settings.grid  -%}
+				<div class="category_wrap homaa">
+                  {% assign dTotalnumber = 0 %}
+                  {% for product in collection.products limit: product_limit %}
+                  {% assign dTotalnumber = dTotalnumber | plus: 1 %}
+                  {% include 'product-grid-item' %}
+ 
+                   {% else %}
+                   {% for i in (1..product_limit) %}
+       
+                  <div class="category_inner">
+						<div class="category_img">
+							<a href="javascript:;">
+								{{ 'product-1'  | placeholder_svg_tag: 'placeholder-svg' }}
+							</a>
+						</div>
+						<div class="category_detail">
+							<h4><a href="javascript:;">Never Underestimate An Old Dude With a Surfboard Hoodie</a></h4>
+							<h5>$14.00</h5>
+							<div class="star-rating">
+								<span class="fa fa-star rating"></span>
+								<span class="fa fa-star rating"></span>
+								<span class="fa fa-star rating"></span>
+								<span class="fa fa-star"></span>
+								<span class="fa fa-star"></span>
+								<span class="rating-review">( 3 reviews )</span>
+							</div>
+						</div>
+					</div>
+      {% endfor %}
+                  
+                  {% endfor %}
+				 
+				</div>
+              <div class="grid__item one-whole text-center"><a class="btn btn--see-more" href="{{collection.url}}">Ver todo</a></div>
+			</div>
+		</div>
+	</div>
+
+{% if dTotalnumber <= 5 %}
+        <style>
+          @media screen and (min-width:992px){
+          #sec{{ section.id }} .owl-nav {
+            display: none !important;
+          }
+          }
+        </style>
+        {% endif %}
+{% if dTotalnumber <= 2 %}
+        <style>
+          @media screen and (max-width:992px){
+          #sec{{ section.id }} .owl-nav {
+            display: none !important;
+          }
+          }
+        </style>
+        {% endif %}
+
+
+ 
+<script>
+    $(document).ready(function () {
+     
+   var i =0;
+  var j =0;
+  var k =0, l=0;
+    var m=0;      
+  calculateheightt(i, k, l);
+      
+        function calculateheightt(i, k, l){
+  
+
+ var divHeight = [], divHeight_home = [], divHeight_home_fcoll =[];
+ var divheightMax, divheightHomeMax, divheightHomeFcollMax;
+ 
+  jQuery('#sec{{ section.id }} .homaa .grid__item').attr('style', "");
+ 
+  
+//  jQuery('.releted--products .carousel-product .grid__item').attr('style', "");
+ 
+ setTimeout(function(){  
+ 
+ 
+   
+   $('#sec{{ section.id }} .homaa .grid__item').each(function(){ 
+      divHeight_home[k++] = $(this).height(); 
+  });
+   
+  var divheightHomeMax = Math.max.apply(Math,divHeight_home);
+  
+  if(divheightHomeMax != ''){
+    $('#sec{{ section.id }} .homaa .grid__item').each(function(){
+        jQuery(this).attr('style', "height: "+divheightHomeMax+"px;");
+      
+    });
+   }
+   
+  
+   
+ 
+ }, 2000);
+ 
+}
+  });
+</script>
+ 
+
+
+{% schema %}
+  {
+    "name": "Featured collection",
+    "class": "index-section cole",
+    "settings": [
+{
+"type": "paragraph",
+"content": "This section displays a row of products from a collection."
+},
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Featured collection"
+      },
+ 
+
+      {
+        "id": "collection",
+        "type": "collection",
+        "label": "Collection"
+      },
+      {
+        "type": "range",
+        "id": "grid",
+        "label": "Products to Show",
+        "min": 1,
+        "max": 40,
+        "step": 1,
+        "default": 3
+      }
+      
+    ],
+    "presets": [
+      {
+        "name": "Featured collection",
+        "category": "Collection"
+      }
+    ]
+  }
+{% endschema %}
+<style>
+  .owl-item .large--one-quarter{width:auto}
+</style>

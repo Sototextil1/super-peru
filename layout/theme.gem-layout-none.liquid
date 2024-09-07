@@ -1,0 +1,178 @@
+{% comment %}
+	GEMPAGE BUILDER (https://apps.shopify.com/gempage)
+
+	You SHOULD NOT modify source code in this page because
+	It is automatically generated from GEMPAGE BUILDER
+	Try to edit page with the live editor.
+{% endcomment %}
+<!doctype html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="ie9 no-js"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js"> <!--<![endif]-->
+<!-- Version 5.0.3 141118-->
+<head> 
+{% include 'ninjacoderz_add_head_code' %}<!-- hnk portfolio proof -->
+  {% if settings.marketing_convert != "" %}{{ settings.marketing_convert }}{% endif %}
+  <meta charset="utf-8">
+  <meta name="robots" content="index, follow">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  {% if settings.favicon_enable %}
+  	<link rel="shortcut icon" href="{{ 'favicon.png' | asset_url }}" type="image/png" />
+  {% endif %}
+  <title>
+    {{ page_title }}{% if current_tags %}{% assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags }}{% endif %}{% if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
+  </title>
+  {% if page_description %}
+  	<meta name="description" content="{{ page_description | escape }}">
+  {% endif %}
+
+  <style>
+    .th-do-table h4{
+      text-align: center !important;
+    }
+ 
+  </style>
+
+<script> 
+  
+var isshoptimized = 1;
+</script>
+
+  <script src="{{ 'jquery.min.js' | asset_url }}"     ></script>
+  
+  <script src="{{ 'app.js' | asset_url }}"    defer ></script>
+  {% include 'social-meta-tags' %}
+  
+                    
+<!--MB_OPC-->
+<script data-cfasync='false'>   
+                  if(window.location.pathname=='/securecheckout'){
+                  document.title = 'Secure checkout';
+                  var css = 'body > :not(#cartLoader) {display:none !important}',head = document.head || document.getElementsByTagName('head')[0],style = document.createElement('style');  
+                  head.appendChild(style);style.appendChild(document.createTextNode(css));        
+                  var svg = "<svg style='position:fixed;top:100px;left:50%;margin-left:-100px;' width='200px'  height='200px'  xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='xMidYMid' class='lds-rolling' style='background: none;'><circle cx='50' cy='50' fill='none' ng-attr-stroke='{{config.color}}' ng-attr-stroke-width='{{config.width}}' ng-attr-r='{{config.radius}}' ng-attr-stroke-dasharray='{{config.dasharray}}' stroke='#197bbd' stroke-width='2' r='15' stroke-dasharray='70.68583470577033 25.561944901923447' transform='rotate(243.197 50 50)'><animateTransform attributeName='transform' type='rotate' calcMode='linear' values='0 50 50;360 50 50' keyTimes='0;1' dur='1s' begin='0s' repeatCount='indefinite'></animateTransform></circle></svg>";
+                  document.open();document.write("<!doctype ht"+"ml><ht"+"ml><bo"+"dy><div id='cartLoader' style='min-height:600px;width:100%;text-align:center;background-color: rgba(255, 255, 255, .5);position:absolute;z-index:9999999999'>"+svg+"</div></b"+"ody></ht"+"ml>");document.close();                
+                  }
+                  var opcSettings = {checkoutUrl : 'securecheckout', enabled : true, design : 1, skipCart : false, oneClickBuy : true, customJsFile : '', customCssFile : '', btnSelector : '', enablePopup: false, popupHtml : "",popupBkg : '#ffffff',upsells : [],boosters : {"booster1":"0","booster1_text":"","booster1_text2":"","booster1_min":"0","booster2":"0","booster3":"0","booster3_heading":"","booster3_title1":"","booster3_text1":"","booster3_img1":"","booster3_title2":"","booster3_text2":"","booster3_img2":"","booster3_title3":"","booster3_text3":"","booster3_img3":"","booster3_title4":"","booster3_text4":"","booster3_img4":"","booster4":"0","booster4_img":"","booster5":"1"}};
+                  var opcLang = {completeOrder : "Complete order", payment : "Payment", shippingMethod : "Shipping method", secureCheckout : "Secure Checkout", paymentNotice : "Please submit information in previous step to show payment methods",shippingNotice : "Please submit shipping information in previous step to show shipping methods",upsellTitle : "Would you like also this? (optional)",upsellAdded : "Product has been successfully added to checkout",addToCheckout : "Add to checkout"};
+                  </script>
+<!--MB_OPC-->
+
+                    <link rel="canonical" href="{{ canonical_url }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="{{ settings.color_primary }}">
+  <meta name="author" content="{{ shop.name }}">
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" /> 
+
+    {% if settings.default_font_family != "" %}
+  	<link href="https://fonts.googleapis.com/css?family={{settings.default_font_family}}:300,400,500,600,700" rel="stylesheet" lazyload />
+ {% endif %}
+  
+  
+  {{ 'timber.scss.css' | asset_url | stylesheet_tag }}
+  {{ 'vendors.min.css' | asset_url | stylesheet_tag }} 
+  {{ 'custom.css' | asset_url | stylesheet_tag }}
+  {{ content_for_header }}
+{% render 'globo.alsobought.script' %}
+ 
+ 
+  {% include 'oldIE-js' %}
+ 
+ 
+  {% if template contains 'customers' %}
+  	{{ "shopify_common.js" | shopify_asset_url | script_tag }}
+    {{ 'customer_area.js'  | shopify_asset_url | script_tag }}
+  {% else %}
+    {{ 'shopify_common.js' | shopify_asset_url | script_tag }}
+  {% endif %}
+    
+  {% if settings.timer_model == "timer_model_2" %}
+  
+   
+  {% endif %}
+  {% if settings.marketing_googleadwords != "" %}{{ settings.marketing_googleadwords }}{% endif %}
+  {% if settings.marketing_googlewebmaster != "" %}{{ settings.marketing_googlewebmaster }}{% endif %}
+  {% if settings.marketing_fbpixel != "" %}{{ settings.marketing_fbpixel }}{% endif %}
+  {% if settings.marketing_feedburner != "" %}{{ settings.marketing_feedburner }}{% endif %}
+  {% if settings.marketing_bingwebmaster != "" %}{{ settings.marketing_bingwebmaster }}{% endif %}
+  {% if settings.marketing_hotjar != "" %}{{ settings.marketing_hotjar }}{% endif %}
+  {% if settings.marketing_googletagmanager != "" %}{{ settings.marketing_googletagmanager }}{% endif %}
+
+  {% if settings.code_placement_option_for_additionalone == "top" %}
+  {% if settings.marketing_additionalone != "" %}{{ settings.marketing_additionalone }}{% endif %}
+  {% endif %}
+  {% if settings.code_placement_option_for_additionaltwo == "top" %}
+  {% if settings.marketing_additionaltwo != "" %}{{ settings.marketing_additionaltwo }}{% endif %}	
+  {% endif %}
+  {% if settings.code_placement_option_for_additionalthree == "top" %}
+  {% if settings.marketing_additionalthree != "" %}{{ settings.marketing_additionalthree }}{% endif %}	
+  {% endif %}
+  {% if settings.code_placement_option_for_additionalfour == "top" %}
+  {% if settings.marketing_additionalfour != "" %}{{ settings.marketing_additionalfour }}{% endif %}	
+  {% endif %}
+  {% if template == "cart" %}
+    {{ 'underscore-min.js' | asset_url | script_tag }} 
+    {{ '/services/javascripts/countries.js' | script_tag }}
+    {{ 'jquery.cart.min.js' | asset_url | script_tag }}
+  {% endif %}
+  <script>
+    if ((typeof window) === 'undefined') { window = {}; }
+    window.money_format = {{ shop.money_format | json }};
+    window.money_default = {{ shop.currency | json }};
+    window.template = {{ template | json }};
+  </script>
+   
+   <script src="{{ 'jquery.redcountdown.js' | asset_url }}"    defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-Knob/1.2.13/jquery.knob.min.js"  defer ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-throttle-debounce/1.1/jquery.ba-throttle-debounce.min.js"  defer ></script>
+
+ 
+  
+  {% comment %} -trckf- {% endcomment %}
+{% if settings.productreview == 'loox'%}
+	{{ shop.metafields.loox["global_html_head"] }}
+  {% endif %}
+ <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'lazysizes.min.js' | asset_url }}" async="async"></script><!--<![endif]-->
+<!--[if lte IE 9]><script src="{{ 'lazysizes.min.js' | asset_url }}"></script><![endif]-->
+  {% include 'alireviews_core' %}
+ 
+  {% render 'zoorix-cart-items' %}
+{%include 'fbTrack' %}<script src="https://demandforapps.com/add/js/add_animate.js"></script>
+{% render 'digismoothie-candyrack' %}
+
+ {% include 'swift_core' %} 
+ {% include "facebook-multipixel" %}</head>
+
+<body>
+<div class="gem-container">
+	{{ content_for_layout }}
+</div><!-- end .gem-container --><!--Gem_Page_Footer_Script-->
+  {%- liquid
+    assign gpTemplateSuffix = template.suffix
+    assign arrSplitSuffix = gpTemplateSuffix | split: '-'
+    if gpTemplateSuffix contains 'gem-' and gpTemplateSuffix contains '-template' and arrSplitSuffix.size == 3
+      assign isV6GpTemplate = true
+    endif
+    assign gpShopMeta = shop.metafields.gempages
+    if gpShopMeta
+      if gpShopMeta['productV6-default'] == 'true' and request.page_type == 'product'
+        assign isProductDefault = true
+      endif
+      if gpShopMeta['collectionV6-default'] == 'true' and request.page_type == 'collection'
+        assign isCollectionDefault = true
+      endif
+      if gpShopMeta['indexV6-default'] == 'true' and request.page_type == 'index'
+        assign isIndexDefault = true
+      endif
+      if isProductDefault or isCollectionDefault or isIndexDefault or isPreviewV6
+        assign isV6GpTemplate = true
+      endif
+    endif
+  %}
+  {% if isV6GpTemplate %}
+    {% render 'gem-app-footer-scripts', GEM_FOOTER_SCRIPT: GEM_FOOTER_SCRIPT %}
+  {% endif %}
+<!--End_Gem_Page_Footer_Script-->
+</body>
+</html>

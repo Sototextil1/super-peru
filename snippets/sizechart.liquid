@@ -1,0 +1,102 @@
+
+<style>
+  .sizeguide-button {
+    margin-left: auto;
+    font-size: 1em;
+    color: #000;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+  }
+  .sizeguide-button:hover {
+    /* text-decoration: none; */
+  }
+  #sizepopup.overlay {
+    position: fixed;
+    z-index: 9;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+  }
+  #sizepopup.overlay:target {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  #sizepopup .popup {
+    margin: 70px auto;
+    background: none;
+    border-radius: 5px;
+    width: 35%;
+    position: relative;
+    transition: all 5s ease-in-out;
+  }
+  #sizepopup img {
+    border-radius: 2px;
+  }
+
+  #sizepopup .popup h2 {
+    margin-top: 0;
+    color: #333;
+    font-family: Tahoma, Arial, sans-serif;
+  }
+  #sizepopup .popup .close {
+    position: absolute;
+    display: inline;
+    top: 4px;
+    right: 19px;
+    transition: all 200ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+  }
+  #sizepopup .popup .close:hover {
+    color: #d9d2c9;
+  }
+  #sizepopup .popup .content {
+    max-height: 30%;
+    overflow: auto;
+  }
+  #sizepopup table {
+    width: -webkit-fill-available;
+  }
+  #sizepopup table,
+  #sizepopup tr,
+  #sizepopup th,
+  #sizepopup td {
+    border: 1px solid;
+    border-collapse: collapse;
+  }
+  #sizepopup tr,
+  #sizepopup th,
+  #sizepopup td {
+    padding: 10px 20px;
+  }
+
+  #btn-7893103378606,
+  #btn-7893106294958 {
+    display: none;
+  }
+  @media screen and (max-width: 700px) {
+    #sizepopup .popup .close {
+      top: -8px;
+      right: 12px;
+    }
+    #sizepopup .popup {
+      width: 93%;
+    }
+  }
+</style>
+
+
+<div id="sizepopup" class="overlay">
+  <div class="popup">
+    <a class="close" href="#">×</a>
+    <img src="{{ sizechartImg | image_url }}" width="100%" height="100%">
+  </div>
+</div>

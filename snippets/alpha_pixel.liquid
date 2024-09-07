@@ -1,0 +1,63 @@
+<!-- Master Track App Hook start -->
+
+<script>
+    let alphaSearchPage = {% if template contains "search" %}true{% else %}false{% endif %};
+    let alphaCollectionPage = {% if template contains "collection" %}true{% else %}false{% endif %};
+    let alphaProductPage = {% if template contains "product" %}true{% else %}false{% endif %};
+    let alphaCartPage = {% if template contains "cart" %}true{% else %}false{% endif %};
+
+    {% if template contains "product" %}
+    let productId = {{ product.id }};
+    let value = "{{ product.price | money_without_currency }}";
+    let niche = [{"id":"{{ product.id }}","quantity":"1"}];
+    let productType = "{{ product.type }}";
+    let name = "{{ product.title }}";
+    {% endif %}
+
+    {% if template contains "collection" %}
+    let collectionTitle = "{{ collection.title }}";
+    {% endif %}
+
+    {% if template contains "cart" %}
+    let itemsCount = {{ cart.item_count }};
+    let totalAmount = "{{ cart.total_price | money_without_currency }}";
+    let ids = [{% for item in cart.items %}{{ item.product.id }}, {% endfor %}];
+    {% endif %}
+
+    {% if template contains "search"%}
+    let searchedIds = [ {% for item in search.results %} {% if item.object_type == 'product' %} {{ item.id }}, {% endif %} {% endfor %} ];
+    let searchString = "{{ search.terms }}";
+    {% endif %}
+
+
+    let collections = [
+      {% if template contains "collection" %} "{{ collection.id }}", {% endif %}
+
+      {% if template contains "product" %}
+      {% for collection in product.collections %}"{{ collection.id }}", {% endfor %}
+      {% endif %}
+
+      {% if template contains "cart" %}
+      {% for item in cart.items %}
+      {% for collection in item.product.collections %}"{{ collection.id }}", {% endfor %}
+      {% endfor %}
+      {% endif %}
+    ];
+
+    let tags = [
+      {% if template contains "product" %}
+      {% for tag in product.tags %}"{{ tag | replace: '"', "" | replace: "'", "" | strip }}", {% endfor %}
+      {% endif %}
+
+      {% if template contains "cart" %}
+      {% for item in cart.items %}
+      {% for tag in item.product.tags %}"{{ tag | replace: '"', "" | replace: "'", "" | strip }}", {% endfor %}
+      {% endfor %}
+      {% endif %}
+    ];
+
+
+</script>
+{{'alpha_pixel.js' | asset_url | script_tag}}
+
+<!-- Master Track App Hook end -->

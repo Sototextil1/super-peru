@@ -1,0 +1,35 @@
+<script src="https://apps-bundles.makebecool.com/js/mbcBundlesApp.js?shop={{ shop.permanent_domain }}" async></script>
+<script>
+  {% if template contains 'product' %}
+    window.MAKEBECOOL_BUNDLES = window.MAKEBECOOL_BUNDLES || {}
+    MAKEBECOOL_BUNDLES.assetUrl = '{{ "filename.png" | asset_url }}'
+    MAKEBECOOL_BUNDLES.moneyFormat = '{{ shop.money_format }}'
+
+    document.addEventListener("DOMContentLoaded", function() {
+      const productType = '{{ product.type }}'
+      const productVariants = {{ product.variants | json }}
+      const productForms = document.querySelectorAll('form[action*="/cart/add"]')
+      let productForm = null
+
+      if (productForms.length) {
+        productForm = Array.from(productForms).find(form => {
+          const selectVariants = form.querySelector('[name="id"]')
+          const selectVariantID = selectVariants ? Number(selectVariants.value) : ''
+          const findVariant = productVariants.find(({id}) => id === selectVariantID)
+          let options, option
+
+          if (!findVariant) {
+            options = selectVariants ? selectVariants.querySelectorAll('option') : []
+            option = Array.from(options).find(({value}) => Number(value) === productVariants[0].id)
+          }
+         if (findVariant || option) return true
+       })
+     }
+
+      const submitBtn = productForm ? productForm.querySelector('[type="submit"], [name="add"]') : null
+      if (submitBtn && productType === 'mbcBundle') {
+        submitBtn.setAttribute('disabled', 'disabled')
+      }
+    });
+  {% endif %}
+</script>

@@ -1,0 +1,11 @@
+<div class="save_amount_one">
+  <span class="fas fa-tag"></span>
+  {{ 'products.product.save' | t }}
+  {%- assign amount_saved = product.compare_at_price | minus: product.price %}
+  {%- if settings.show_saved_percentage_instead %}
+  {%- assign percent_saved = amount_saved | times: 100 | divided_by: product.compare_at_price %}
+  <span class='percent'>{{ percent_saved }}%</span>
+  {%- else %}
+  <span class='money'>{{ amount_saved | money }}</span>
+  {%- endif %}
+</div>
